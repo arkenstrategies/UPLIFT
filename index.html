@@ -595,7 +595,7 @@ function renderGapAlerts(){
   document.getElementById('gapAlerts').innerHTML = top.map(o=>{
     const gl = gapLevel(o.score);
     const progCnt = matchingPrograms(o).length;
-    const diffLabel = o.diff.great > 0.2 ? 'Hard to fill' : o.diff.great > 0.1 ? 'Somewhat difficult' : 'Moderate';
+    const diffLabel = o.diff.great > 0.2 ? 'Hard to fill' : o.diff.great > 0.1 ? 'Somewhat difficult to fill' : 'Moderate difficulty to fill';
     const topSkill = o.skills.length ? o.skills[0].s : null;
     return `
     <div class="gap-card ${gl.cls}" onclick="openOcc('${o.name}'); setTimeout(()=>document.querySelector('.explorer-shell')?.scrollIntoView({behavior:'smooth',block:'start'}),100);" style="cursor:pointer;">
