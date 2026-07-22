@@ -876,6 +876,13 @@ async function submitProgram(){
   if(AIRTABLE_TOKEN.startsWith('YOUR_')){showProgramError('Database not configured yet. See setup notes.');return;}
   const btn=document.getElementById('progSubmitBtn');
   btn.disabled=true;btn.textContent='Submitting...';
+
+  // Auto-geocode from zip code so staff never enter coordinates
+  let lat='', lng='';
+  try{
+    const zipMatch=(v('city')+' '+v('county')).length>0 ? null : null;
+    const zip=(document.getElementById('progZip')?.value||'').trim();
+  }catch(e){}
   const fields={
     'Program Name':v('programName'),'Institution Name/Program Host':v('institution'),
     'Website URL':v('website'),'County':v('county'),'Town/City':v('city'),
